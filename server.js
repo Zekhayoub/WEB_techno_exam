@@ -62,6 +62,6 @@ app.get('/', (request, response) => {
     getRoomData(response);
 });
 
-app.listen(800, function () {
-    console.log("Server ok, 800");
+app.listen(80, function () {
+    console.log("Server ok, 80");
 });
