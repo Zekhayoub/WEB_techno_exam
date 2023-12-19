@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestion d'appartement</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div id="app">
+
+        <h1>Gestion d'appartement</h1>
+
+        <h2>Liste des pièces</h2>
+        <ul id="roomList">
+            <% for(var i = 0; i < roomTable.length; i++){ %>
+                <li>
+                    <span><%= roomTable[i].name %> - <%= roomTable[i].length %>m x <%= roomTable[i].width %>m</span>
+                    <form method="post" action="deleteRoom" style="display:inline;">
+                        <input type="hidden" name="deleteRoom" value="<%= roomTable[i].id %>">
+                        <input type="submit" value="Supprimer">
+                    </form>
+                </li>
+            <% }; %>
+        </ul>
+
+        <h2>Ajouter une pièce</h2>
+        <form action="addRoom" method="post">
+            <label>Nom de la pièce:</label>
+            <input name="roomName" type="text" placeholder="Nom de la pièce">
+            <label>Longueur:</label>
+            <input name="roomLength" type="number" placeholder="Longueur en mètres">
+            <label>Largeur:</label>
+            <input name="roomWidth" type="number" placeholder="Largeur en mètres">
+            <input type="submit" value="Ajouter">
+        </form>
+
+        <h2>Surface totale de l'appartement</h2>
+        <ul id="areaList">
+            <% for(var i = 0; i < roomTable.length; i++){ %>
+                <li>
+                    <%= roomTable[i].name %> - <%= roomTable[i].length * roomTable[i].width %> m²
+                </li>
+            <% }; %>
+        </ul>
+
+    </div>
+
+    <script src="home.js"></script>
+</body>
+</html>
